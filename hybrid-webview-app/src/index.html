@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSync - Collaborative Shopping Lists</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="home-page">
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <div class="tab active" data-tab="login">Sign In</div>
+                <div class="tab" data-tab="signup">New User</div>
+            </div>
+            
+            <div id="login-form" class="auth-form active">
+                <h3>Sign In</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email/Username</label>
+                        <input type="text" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="button">Login</button>
+                </form>
+                <p class="form-footer">Forgot password? <a href="#">Reset here</a></p>
+            </div>
+            
+            <div id="signup-form" class="auth-form">
+                <h3>Create Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="button">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1><i class="fas fa-shopping-cart"></i> ShopSync</h1>
+            </div>
+            <div class="auth-buttons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="side-navbar" id="side-navbar">
+        <ul>
+            <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="pages/lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+            <li><a href="pages/shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+            <li><a href="pages/recent.html"><i class="fas fa-history"></i> Recent</a></li>
+            <li><a href="pages/shop.html"><i class="fas fa-store"></i> Shop</a></li>
+            <li><a href="pages/search.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="pages/profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="pages/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Content Area -->
+            <div class="content" id="main-content">
+                <!-- Home Page Content -->
+                <section class="hero">
+                    <h2>Simplify Shopping Together</h2>
+                    <p>Create, manage, and share shopping lists with anyone, synced in real-time.</p>
+                    <button class="button large" id="create-first-list">Create New List</button>
+                </section>
+
+                <section class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-pencil-alt"></i>
+                        <h3>Create Lists</h3>
+                        <p>Create multiple shopping lists for different stores or occasions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Share Easily</h3>
+                        <p>Share lists with family and friends with a simple link.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-sync"></i>
+                        <h3>Real-time Sync</h3>
+                        <p>Changes update instantly across all connected devices.</p>
+                    </div>
+                </section>
+                
+                <!-- Introduction Section -->
+                <section class="introduction">
+                    <h2>How ShopSync Works</h2>
+                    
+                    <div class="step-cards">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>Create an Account</h3>
+                            <p>Sign up for free and access your lists from any device.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>Create Shopping Lists</h3>
+                            <p>Make lists for groceries, household items, gifts, or any purpose.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>Share & Collaborate</h3>
+                            <p>Invite family or roommates to view and edit your lists in real-time.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h3>Shop with Ease</h3>
+                            <p>Check off items as you shop - changes sync instantly across devices.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Testimonial Section -->
+                <section class="testimonials">
+                    <h2>What Our Users Say</h2>
+                    
+                    <div class="testimonial-container">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>ShopSync has transformed how my family coordinates grocery shopping. No more duplicate purchases!</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <p>- Sarah K.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>As roommates, we use ShopSync to manage our shared shopping. It's intuitive and saves us time.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <p>- Michael T.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>The real-time sync works flawlessly. My husband and I can shop simultaneously at different stores!</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <p>- Jessica M.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <section class="cta">
+                    <h2>Ready to simplify your shopping?</h2>
+                    <p>Join thousands of users who have made shopping coordination effortless.</p>
+                    <button id="home-signup-btn" class="button large">Sign Up Now - It's Free!</button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/shop.html">Shop</a></li>
+                        <li><a href="pages/lists.html">My Lists</a></li>
+                        <li><a href="pages/profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Single DOMContentLoaded event to avoid conflicts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navbar functionality
+            initializeNavbar();
+            
+            // Initialize animations
+            initializeShoppingAnimations();
+            
+            // Set up button event listeners
+            setupButtonHandlers();
+            
+            // Check if user is already logged in
+            checkAuthStatus();
+        });
+        
+        function initializeNavbar() {
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const sideNavbar = document.getElementById('side-navbar');
+            const navbarOverlay = document.getElementById('navbar-overlay');
+            const mainContent = document.getElementById('main-content');
+            
+            if (navbarToggle && sideNavbar && navbarOverlay) {
+                // Toggle navbar when clicking menu button
+                navbarToggle.addEventListener('click', function() {
+                    console.log('Navbar toggle clicked');
+                    sideNavbar.classList.toggle('active');
+                    navbarOverlay.classList.toggle('active');
+                    
+                    // Debug check - log the navbar's current classes
+                    console.log('Navbar classes:', sideNavbar.className);
+                    
+                    // Force layout recalculation (fixes some rendering issues)
+                    void sideNavbar.offsetWidth;
+                });
+                
+                // Close navbar when clicking overlay
+                navbarOverlay.addEventListener('click', function() {
+                    sideNavbar.classList.remove('active');
+                    navbarOverlay.classList.remove('active');
+                });
+            } else {
+                console.error('Navbar elements not found:', {
+                    toggle: !!navbarToggle,
+                    navbar: !!sideNavbar,
+                    overlay: !!navbarOverlay
+                });
+            }
+        }
+        
+        function setupButtonHandlers() {
+            // Get button elements
+            const createListBtn = document.getElementById('create-first-list');
+            const signupBtn = document.getElementById('home-signup-btn');
+            const loginBtn = document.getElementById('login-button');
+            const authModal = document.getElementById('auth-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const loginTab = document.querySelector('.tab[data-tab="login"]');
+            const signupTab = document.querySelector('.tab[data-tab="signup"]');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            
+            // Create New List button
+            if (createListBtn) {
+                createListBtn.addEventListener('click', function() {
+                    // Check if user is logged in
+                    const isLoggedIn = localStorage.getItem('shopSyncLoggedIn') === 'true';
+                    
+                    if (isLoggedIn) {
+                        // Redirect to the list creation page
+                        window.location.href = 'pages/lists.html?action=new';
+                    } else {
+                        // Show authentication modal
+                        authModal.classList.add('active');
+                        // Switch to signup tab as they need an account to create lists
+                        if (signupTab) signupTab.click();
+                    }
+                });
+            }
+            
+            // Sign Up button in CTA section
+            if (signupBtn && authModal && signupTab && loginForm && signupForm) {
+                signupBtn.addEventListener('click', function() {
+                    authModal.classList.add('active');
+                    // Activate signup tab
+                    signupTab.click();
+                    loginForm.classList.remove('active');
+                    signupForm.classList.add('active');
+                });
+            }
+            
+            // Login button in header
+            if (loginBtn && authModal && loginTab && signupForm && loginForm) {
+                loginBtn.addEventListener('click', function() {
+                    authModal.classList.add('active');
+                    // Activate login tab
+                    loginTab.click();
+                    signupForm.classList.remove('active');
+                    loginForm.classList.add('active');
+                });
+            }
+            
+            // Close modal when clicking the X
+            if (closeModal && authModal) {
+                closeModal.addEventListener('click', function() {
+                    authModal.classList.remove('active');
+                });
+            }
+            
+            // Tab switching in auth modal
+            const tabs = document.querySelectorAll('.tab');
+            if (tabs.length) {
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // Remove active class from all tabs
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        // Add active class to clicked tab
+                        this.classList.add('active');
+                        
+                        // Hide all forms
+                        document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+                        
+                        // Show selected form
+                        const formToShow = this.getAttribute('data-tab');
+                        document.getElementById(`${formToShow}-form`).classList.add('active');
+                    });
+                });
+            }
+            
+            // Set up form submissions
+            setupFormHandlers();
+        }
+        
+        function setupFormHandlers() {
+            // Login form
+            const loginForm = document.querySelector('#login-form form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    if (email && password) {
+                        // Mock login (in a real app, this would validate with a server)
+                        localStorage.setItem('shopSyncLoggedIn', 'true');
+                        localStorage.setItem('shopSyncUsername', email.split('@')[0]);
+                        
+                        // Hide modal and update UI
+                        document.getElementById('auth-modal').classList.remove('active');
+                        
+                        // Update login button text
+                        const loginButton = document.getElementById('login-button');
+                        if (loginButton) {
+                            loginButton.textContent = email.split('@')[0];
+                        }
+                        
+                        // Show cart icon
+                        const cartIcon = document.getElementById('cart-icon');
+                        if (cartIcon) {
+                            cartIcon.style.display = 'flex';
+                        }
+                        
+                        // Show success message
+                        showToast('Successfully signed in!');
+                    } else {
+                        alert('Please fill in all fields');
+                    }
+                });
+            }
+            
+            // Signup form
+            const signupForm = document.querySelector('#signup-form form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signup-name').value;
+                    const email = document.getElementById('signup-email').value;
+                    const username = document.getElementById('signup-username').value;
+                    const password = document.getElementById('signup-password').value;
+                    
+                    if (name && email && username && password) {
+                        // Mock signup (in a real app, this would send to a server)
+                        localStorage.setItem('shopSyncLoggedIn', 'true');
+                        localStorage.setItem('shopSyncUsername', username);
+                        
+                        // Store user data
+                        const userData = {
+                            name: name,
+                            email: email,
+                            username: username
+                        };
+                        localStorage.setItem('shopSyncUser', JSON.stringify(userData));
+                        
+                        // Hide modal and update UI
+                        document.getElementById('auth-modal').classList.remove('active');
+                        
+                        // Update login button text
+                        const loginButton = document.getElementById('login-button');
+                        if (loginButton) {
+                            loginButton.textContent = username;
+                        }
+                        
+                        // Show cart icon
+                        const cartIcon = document.getElementById('cart-icon');
+                        if (cartIcon) {
+                            cartIcon.style.display = 'flex';
+                        }
+                        
+                        // Show success message
+                        showToast('Account created successfully!');
+                    } else {
+                        alert('Please fill in all fields');
+                    }
+                });
+            }
+        }
+        
+        function checkAuthStatus() {
+            const isLoggedIn = localStorage.getItem('shopSyncLoggedIn') === 'true';
+            const username = localStorage.getItem('shopSyncUsername');
+            const loginButton = document.getElementById('login-button');
+            const cartIcon = document.getElementById('cart-icon');
+            
+            if (isLoggedIn && username && loginButton) {
+                loginButton.textContent = username;
+                
+                // Show cart icon
+                if (cartIcon) {
+                    cartIcon.style.display = 'flex';
+                }
+            } else {
+                // Hide cart icon for logged out users
+                if (cartIcon) {
+                    cartIcon.style.display = 'none';
+                }
+            }
+        }
+        
+        // Function to create shopping-themed animations
+        function initializeShoppingAnimations() {
+            const shoppingElements = ['🛒', '🛍️', '📋', '✓', '💳', '🏷️', '🔖', '📱', '📦'];
+            const container = document.createElement('div');
+            container.id = 'shopping-elements-container';
+            document.body.appendChild(container);
+            
+            // Create floating shopping elements
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = 'shopping-element';
+                element.textContent = shoppingElements[Math.floor(Math.random() * shoppingElements.length)];
+                
+                // Random positioning
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.fontSize = `${Math.random() * 20 + 20}px`;
+                
+                // Random animation
+                const duration = Math.random() * 10 + 15;
+                const delay = Math.random() * 5;
+                element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                container.appendChild(element);
+            }
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            // Check if a toast already exists
+            let toast = document.getElementById('toast-notification');
+            if (!toast) {
+                // Create toast element
+                toast = document.createElement('div');
+                toast.id = 'toast-notification';
+                toast.className = 'toast';
+                document.body.appendChild(toast);
+            }
+            
+            // Set message and show
+            toast.textContent = message;
+            toast.classList.add('active');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* Shared Lists page specific styles */
+
+.shared-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #4a6fa5 0%, #3a5980 100%);
+    border-radius: 8px;
+    padding: 20px;
+    color: white;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+    overflow: hidden;
+}
+
+.shared-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.shared-header h2 {
+    color: #0b3d91; /* Navy blue */
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Shared lists */
+.shared-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.shared-list-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.shared-list-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-bottom-color: #ffd700; /* Golden yellow */
+}
+
+.shared-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.shared-user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b3d91; /* Navy blue */
+}
+
+.shared-user-avatar i {
+    font-size: 1.5rem;
+    color: #4a6fa5;
+}
+
+.shared-list-card h3 {
+    margin: 15px 0;
+    color: #0b3d91; /* Navy blue */
+}
+
+.shared-list-meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.item-count {
+    display: flex;
+    align-items: center;
+}
+
+.item-count i {
+    margin-right: 5px;
+}
+
+.shared-list-card .button {
+    width: 100%;
+}
+
+/* Invitations section */
+.invitations {
+    margin-bottom: 30px;
+}
+
+.invitation-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ffd700; /* Golden yellow */
+    transition: transform 0.3s ease;
+}
+
+.invitation-card:hover {
+    transform: translateY(-3px);
+}
+
+.invitation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.invitation-header h3 {
+    margin: 0;
+    color: #0b3d91; /* Navy blue */
+}
+
+.invitation-status {
+    background: #f8f9fa;
+    color: #6c757d;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.invitation-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.invitation-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #0b3d91; /* Navy blue */
+}
+
+.invitation-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    background: white;
+    padding: 50px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #ffd700; /* Golden yellow */
+    margin-bottom: 20px;
+    display: block;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    color: #0b3d91; /* Navy blue */
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #6c757d;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .shared-lists {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    .shared-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .shared-lists {
+        grid-template-columns: 1fr;
+    }
+    
+    .invitation-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .invitation-actions .button {
+        width: 100%;
+    }
+}

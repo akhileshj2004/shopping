@@ -1,0 +1,166 @@
+/* Lists page specific styles */
+
+.dashboard-header {
+    background: linear-gradient(135deg, #4a6fa5 0%, #3a5980 100%);
+    border-radius: 8px;
+    padding: 20px;
+    color: white;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.652.24 3.36.533 5.056.533 1.47 0 2.92-.212 4.33-1.086 2.24-1.385 2.386-4.805.517-6.68-2.92-2.93-7.298-2.114-10.596-2.114-.43 0-.865.025-1.293.075-.38.05-.772.108-1.158.17-3.056.5-3.982-2.407-1.816-3.645 1.246-.717 3.092-.42 4.45-.42 1.713 0 3.426.076 5.14.076 1.107 0 2.213-.04 3.318-.133-.33-.362-.67-.717-1.02-1.065-1.922-1.91-4.61-2.354-7.22-2.354-4.5 0-9.03 1.465-12.283 4.277-.236.204-.494.39-.752.575 1.033 2.057-.85 2.717-1.967 3.874-1.24 1.28-2.273 3.033-2.273 4.878 0 3.572 3.382 4.442 6.186 4.442 2.115 0 4.27-.34 6.37-.63z' fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-header .button {
+    position: relative;
+    z-index: 1;
+}
+
+/* Not logged in message */
+.not-logged-in-message {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.not-logged-in-message i {
+    font-size: 3rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.not-logged-in-message h3 {
+    margin-bottom: 10px;
+}
+
+.not-logged-in-message p {
+    margin-bottom: 20px;
+    color: #6c757d;
+}
+
+/* List form container */
+#list-form-container {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* List items */
+#list-items {
+    list-style: none;
+    margin: 15px 0;
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#list-items li {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#list-items li:last-child {
+    border-bottom: none;
+}
+
+#list-items li span {
+    flex: 1;
+    margin: 0 15px;
+}
+
+#list-items li .delete-item {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Grid layout for list cards on larger screens */
+@media (min-width: 992px) {
+    .list-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Enhanced list card */
+.list-card {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: 5px solid #4a6fa5;
+}
+
+.list-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.list-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+    position: relative;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.list-card .list-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.list-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.list-actions button {
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-size: 1rem;
+}
+
+.list-actions button:hover {
+    color: #4a6fa5;
+}

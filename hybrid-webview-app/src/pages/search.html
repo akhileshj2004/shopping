@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users - ShopSync</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <body class="page-name">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="side-navbar" id="side-navbar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+            <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+            <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+            <li><a href="shop.html"><i class="fas fa-store"></i> Shop</a></li>
+            <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay"></div>
+
+    <!-- Header & Auth Modal (same structure as other pages) -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container main-container">
+            <!-- Left Navbar -->
+            <nav class="side-navbar">
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+                    <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+                    <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+                    <li class="active"><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Search Page Content -->
+                <div class="search-section">
+                    <h2>Find Users</h2>
+                    <div class="search-container">
+                        <input type="text" id="user-search" placeholder="Search for users...">
+                        <button id="search-btn" class="button"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="search-results-info">
+                        <p>Enter a username or email to find other ShopSync users.</p>
+                    </div>
+                    
+                    <div id="search-results">
+                        <!-- Search results will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- User Profile View -->
+                <section id="profile-view" class="profile-view hidden">
+                    <div class="profile-header">
+                        <div class="profile-image">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profile-username">Username</h2>
+                            <p id="profile-fullname">Full Name</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Shared Shopping Lists</h3>
+                    <div id="profile-lists" class="list-container">
+                        <!-- User's shared lists will be displayed here -->
+                    </div>
+                    
+                    <button id="back-to-search" class="button secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Search
+                    </button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as other pages) -->
+    <footer class="footer">
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/search.js"></script>
+    
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</body>
+</html>

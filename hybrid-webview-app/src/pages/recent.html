@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Activity - ShopSync</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/recent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+    <body class="page-name">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="side-navbar" id="side-navbar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+            <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+            <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+            <li><a href="shop.html"><i class="fas fa-store"></i> Shop</a></li>
+            <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay"></div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <div class="tab active" data-tab="login">Sign In</div>
+                <div class="tab" data-tab="signup">New User</div>
+            </div>
+            
+            <div id="login-form" class="auth-form active">
+                <h3>Sign In</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email/Username</label>
+                        <input type="text" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="button">Login</button>
+                </form>
+                <p class="form-footer">Forgot password? <a href="#">Reset here</a></p>
+            </div>
+            
+            <div id="signup-form" class="auth-form">
+                <h3>Create Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="button">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container main-container">
+            <!-- Left Navbar -->
+            <nav class="side-navbar">
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+                    <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+                    <li class="active"><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+                    <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Recent Activity Header -->
+                <div class="recent-header">
+                    <h2>Recent Activity</h2>
+                    <button class="clear-all" id="clear-activity">Clear All</button>
+                </div>
+                
+                <!-- Not logged in message -->
+                <div id="not-logged-in" class="empty-state">
+                    <i class="fas fa-lock"></i>
+                    <h3>Sign in to view your activity</h3>
+                    <p>Please sign in or create an account to view your recent shopping list activity.</p>
+                    <button id="recent-login-btn" class="button">Sign In</button>
+                </div>
+                
+                <!-- Activity feed for logged in users -->
+                <div id="activity-feed" class="activity-feed hidden">
+                    <!-- Activity items will be populated here -->
+                </div>
+                
+                <!-- Empty state when logged in but no activity -->
+                <div id="empty-activity" class="empty-state hidden">
+                    <i class="fas fa-history"></i>
+                    <h3>No Recent Activity</h3>
+                    <p>Your recent activity will appear here as you create and interact with shopping lists.</p>
+                    <button class="button" onclick="window.location.href='lists.html'">Create a List</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="search.html">Find Users</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('shopSyncLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                // Show activity feed for logged in users
+                document.getElementById('not-logged-in').classList.add('hidden');
+                document.getElementById('activity-feed').classList.remove('hidden');
+                
+                // Load activity data
+                loadActivityData();
+            } else {
+                // Handle login button click
+                document.getElementById('recent-login-btn').addEventListener('click', function() {
+                    document.getElementById('auth-modal').classList.add('active');
+                });
+            }
+            
+            // Set up clear activity button
+            document.getElementById('clear-activity').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all activity history?')) {
+                    clearActivityHistory();
+                }
+            });
+            
+            // Create tech elements
+            createTechElements();
+        });
+        
+        function loadActivityData() {
+            // Mock activity data for demo purposes
+            const activities = [
+                {
+                    type: 'created',
+                    icon: 'fa-plus-circle',
+                    content: 'You created a new shopping list',
+                    listName: 'Weekly Groceries',
+                    time: '2 hours ago',
+                    listId: 'list1'
+                },
+                {
+                    type: 'updated',
+                    icon: 'fa-edit',
+                    content: 'You added 3 items to',
+                    listName: 'Home Supplies',
+                    time: '5 hours ago',
+                    listId: 'list2'
+                },
+                {
+                    type: 'shared',
+                    icon: 'fa-share-alt',
+                    content: 'You shared',
+                    listName: 'Birthday Party',
+                    time: '1 day ago',
+                    listId: 'list3',
+                    withUser: 'Sarah Johnson'
+                },
+                {
+                    type: 'completed',
+                    icon: 'fa-check-circle',
+                    content: 'You marked 5 items as completed in',
+                    listName: 'Weekly Groceries',
+                    time: '2 days ago',
+                    listId: 'list1'
+                }
+            ];
+            
+            const activityFeed = document.getElementById('activity-feed');
+            
+            if (activities.length > 0) {
+                let html = '';
+                
+                activities.forEach(activity => {
+                    let activityHTML = `
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas ${activity.icon}"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>${activity.content} <strong>"${activity.listName}"</strong>`;
+                    
+                    if (activity.withUser) {
+                        activityHTML += ` with <strong>${activity.withUser}</strong>`;
+                    }
+                    
+                    activityHTML += `</p>
+                                <div class="activity-meta">${activity.time}</div>
+                                <div class="activity-actions">
+                                    <button onclick="viewList('${activity.listId}')">View List</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    html += activityHTML;
+                });
+                
+                activityFeed.innerHTML = html;
+                document.getElementById('empty-activity').classList.add('hidden');
+            } else {
+                // Show empty state
+                document.getElementById('activity-feed').classList.add('hidden');
+                document.getElementById('empty-activity').classList.remove('hidden');
+            }
+        }
+        
+        function clearActivityHistory() {
+            // In a real app, this would call an API to clear user activity
+            document.getElementById('activity-feed').innerHTML = '';
+            document.getElementById('activity-feed').classList.add('hidden');
+            document.getElementById('empty-activity').classList.remove('hidden');
+        }
+        
+        function viewList(listId) {
+            // In a real app, this would navigate to the list view
+            window.location.href = `lists.html?list=${listId}`;
+        }
+    </script>
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</body>
+</html>

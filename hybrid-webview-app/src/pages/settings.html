@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - ShopSync</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+    <body class="page-name">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="side-navbar" id="side-navbar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+            <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+            <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+            <li><a href="shop.html"><i class="fas fa-store"></i> Shop</a></li>
+            <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay"></div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <div class="tab active" data-tab="login">Sign In</div>
+                <div class="tab" data-tab="signup">New User</div>
+            </div>
+            
+            <div id="login-form" class="auth-form active">
+                <h3>Sign In</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email/Username</label>
+                        <input type="text" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="button">Login</button>
+                </form>
+                <p class="form-footer">Forgot password? <a href="#">Reset here</a></p>
+            </div>
+            
+            <div id="signup-form" class="auth-form">
+                <h3>Create Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="button">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container main-container">
+            <!-- Left Navbar -->
+            <nav class="side-navbar">
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+                    <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+                    <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+                    <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="content">
+                <div class="settings-header">
+                    <h2>Settings</h2>
+                    <p>Customize your ShopSync experience</p>
+                </div>
+                
+                <!-- Not logged in message -->
+                <div id="not-logged-in" class="not-logged-in">
+                    <i class="fas fa-lock"></i>
+                    <h3>Sign in to access settings</h3>
+                    <p>Please sign in or create an account to customize your ShopSync experience.</p>
+                    <button id="settings-login-btn" class="button">Sign In</button>
+                </div>
+                
+                <!-- Settings for logged in users -->
+                <div id="settings-content" class="hidden">
+                    <!-- Appearance Settings -->
+                    <div class="settings-section">
+                        <h3>Appearance</h3>
+                        <div class="settings-form">
+                            <div class="form-row">
+                                <label>Theme</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="theme-light" name="theme" value="light" checked>
+                                        <label for="theme-light"><span class="theme-preview light"></span> Light</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="theme-dark" name="theme" value="dark">
+                                        <label for="theme-dark"><span class="theme-preview dark"></span> Dark</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="theme-blue" name="theme" value="blue">
+                                        <label for="theme-blue"><span class="theme-preview blue"></span> Blue</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label>List View</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="view-grid" name="list-view" value="grid" checked>
+                                        <label for="view-grid">Grid</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="view-list" name="list-view" value="list">
+                                        <label for="view-list">List</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div class="settings-section">
+                        <h3>Notifications</h3>
+                        <div class="settings-form">
+                            <div class="form-row">
+                                <label for="notifications-lists">List Updates</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notifications-lists" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <label for="notifications-shares">New Shares</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notifications-shares" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <label for="notifications-email">Email Notifications</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notifications-email">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Settings -->
+                    <div class="settings-section">
+                        <h3>Privacy</h3>
+                        <div class="settings-form">
+                            <div class="form-row">
+                                <label for="privacy-profile">Profile Visibility</label>
+                                <select id="privacy-profile" class="form-select">
+                                    <option value="public">Public</option>
+                                    <option value="friends">Friends Only</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <label for="privacy-search">Allow Search by Email</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="privacy-search" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Save Button -->
+                    <div class="form-actions">
+                        <button id="save-settings" class="button">Save Settings</button>
+                        <button id="reset-settings" class="button secondary">Reset to Default</button>
+                    </div>
+                    
+                    <!-- Danger Zone -->
+                    <div class="danger-zone">
+                        <h4>Danger Zone</h4>
+                        <p>These actions cannot be undone.</p>
+                        <button id="delete-account" class="button">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="search.html">Find Users</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('shopSyncLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                // Show settings for logged in users
+                document.getElementById('not-logged-in').classList.add('hidden');
+                document.getElementById('settings-content').classList.remove('hidden');
+                
+                // Load user settings
+                loadUserSettings();
+                
+                // Set up settings form handlers
+                setupSettingsHandlers();
+            } else {
+                // Handle login button click
+                document.getElementById('settings-login-btn').addEventListener('click', function() {
+                    document.getElementById('auth-modal').classList.add('active');
+                });
+            }
+            
+            // Create tech elements
+            createTechElements();
+        });
+        
+        function loadUserSettings() {
+            // In a real app, this would load settings from the server
+            // For demo purposes, we'll just use defaults
+            console.log('Loading user settings...');
+        }
+        
+        function setupSettingsHandlers() {
+            // Save settings button
+            document.getElementById('save-settings').addEventListener('click', function() {
+                saveSettings();
+            });
+            
+            // Reset settings button
+            document.getElementById('reset-settings').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all settings to default?')) {
+                    resetSettings();
+                }
+            });
+            
+            // Delete account button
+            document.getElementById('delete-account').addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete your account? This action cannot be undone!')) {
+                    if (confirm('All your data will be permanently deleted. Please confirm this action.')) {
+                        deleteAccount();
+                    }
+                }
+            });
+            
+            // Theme selector
+            document.querySelectorAll('input[name="theme"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    applyTheme(this.value);
+                });
+            });
+        }
+        
+        function saveSettings() {
+            // Get all settings values
+            const settings = {
+                theme: document.querySelector('input[name="theme"]:checked').value,
+                listView: document.querySelector('input[name="list-view"]:checked').value,
+                notifications: {
+                    lists: document.getElementById('notifications-lists').checked,
+                    shares: document.getElementById('notifications-shares').checked,
+                    email: document.getElementById('notifications-email').checked
+                },
+                privacy: {
+                    profile: document.getElementById('privacy-profile').value,
+                    search: document.getElementById('privacy-search').checked
+                }
+            };
+            
+            // In a real app, this would save to the server
+            console.log('Saving settings:', settings);
+            alert('Settings saved successfully!');
+        }
+        
+        function resetSettings() {
+            // Reset form to defaults
+            document.getElementById('theme-light').checked = true;
+            document.getElementById('view-grid').checked = true;
+            document.getElementById('notifications-lists').checked = true;
+            document.getElementById('notifications-shares').checked = true;
+            document.getElementById('notifications-email').checked = false;
+            document.getElementById('privacy-profile').value = 'public';
+            document.getElementById('privacy-search').checked = true;
+            
+            // Apply light theme
+            applyTheme('light');
+            
+            alert('Settings have been reset to default.');
+        }
+        
+        function deleteAccount() {
+            // In a real app, this would make an API call to delete the account
+            localStorage.removeItem('shopSyncLoggedIn');
+            localStorage.removeItem('shopSyncUser');
+            
+            alert('Your account has been deleted. You will now be redirected to the home page.');
+            window.location.href = '../index.html';
+        }
+        
+        function applyTheme(theme) {
+            // In a real app, this would apply CSS changes
+            console.log('Applying theme:', theme);
+        }
+    </script>
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</body>
+</html>

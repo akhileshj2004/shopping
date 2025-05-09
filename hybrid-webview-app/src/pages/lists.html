@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lists - ShopSync</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/lists.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Login/Signup Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <!-- Auth modal content (same as index.html) -->
+            <!-- This is reused across pages -->
+        </div>
+    </div>
+<body class="page-name">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="side-navbar" id="side-navbar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+            <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+            <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+            <li><a href="shop.html"><i class="fas fa-store"></i> Shop</a></li>
+            <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="../index.html"><i class="fas fa-shopping-cart"></i> ShopSync</a></h1>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-button" class="button">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container main-container">
+            <!-- Left Navbar -->
+            <nav class="side-navbar">
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="active"><a href="lists.html"><i class="fas fa-list"></i> My Lists</a></li>
+                    <li><a href="shared.html"><i class="fas fa-user-friends"></i> Shared Lists</a></li>
+                    <li><a href="recent.html"><i class="fas fa-history"></i> Recent</a></li>
+                    <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Lists Page Content -->
+                <section id="dashboard" class="dashboard">
+                    <div class="dashboard-header">
+                        <h2>My Shopping Lists</h2>
+                        <button id="create-list" class="button"><i class="fas fa-plus"></i> New List</button>
+                    </div>
+                    
+                    <div class="list-container">
+                        <!-- Lists will be populated here via JavaScript -->
+                    </div>
+                    
+                    <!-- Create/Edit List Form -->
+                    <div id="list-form-container" class="hidden">
+                        <form id="list-form">
+                            <div class="form-group">
+                                <label for="list-name">List Name</label>
+                                <input type="text" id="list-name" required>
+                            </div>
+                            <div class="items-container">
+                                <h3>Items</h3>
+                                <ul id="list-items">
+                                    <!-- Items will be added here -->
+                                </ul>
+                                <div class="add-item-form">
+                                    <input type="text" id="new-item" placeholder="Add new item...">
+                                    <button type="button" id="add-item" class="button small">Add</button>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button">Save List</button>
+                                <button type="button" id="cancel-list" class="button secondary">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Share List Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Share Your List</h3>
+            
+            <div class="share-options">
+                <div class="share-link">
+                    <p>Share via link:</p>
+                    <div class="copy-link">
+                        <input type="text" id="share-link-input" readonly>
+                        <button id="copy-link-btn" class="button small">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="share-buttons">
+                    <p>Share via:</p>
+                    <div class="social-share">
+                        <button class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></button>
+                        <button class="social-btn email"><i class="fas fa-envelope"></i></button>
+                        <button class="social-btn facebook"><i class="fab fa-facebook"></i></button>
+                        <button class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/lists.js"></script>
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-shopping-cart"></i> ShopSync</h2>
+                    <p>Simplify Shopping Together</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="lists.html">My Lists</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopSync. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</body>
+</html>
