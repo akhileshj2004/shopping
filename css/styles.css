@@ -193,7 +193,7 @@ main {
     height: 100vh;
     position: fixed;
     top: 0;
-    left: -250px; /* Start hidden off-screen */
+    left: 250px; /* Start hidden off-screen */
     z-index: 200;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
@@ -793,7 +793,7 @@ section h2 {
     height: 100vh;
     position: fixed;
     top: 0;
-    left: -250px; /* Start hidden off-screen */
+    left: 250px; /* Start hidden off-screen */
     z-index: 200;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
